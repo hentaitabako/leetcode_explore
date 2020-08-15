@@ -7,20 +7,29 @@ import (
 
 func main() {
 	// fmt.Println("vim-go")
-	fmt.Printf("%q\n", strings.Split("hello world!        example", " "))
-	r := reverseWord("hello")
-	fmt.Printf("%v", r)
+	fmt.Printf("%v\n", reverseWords("the sky is blue"))
 }
 
 func reverseWords(s string) string {
-	return "sb"
+	splitWords := strings.Split(s, " ")
+	result := ""
+	for i := len(splitWords) - 1; i >= 0; i-- {
+		if len(splitWords[i]) != 0 {
+			if len(result) == 0 {
+				result = result + splitWords[i]
+			} else {
+				result = result + " " + splitWords[i]
+			}
+		}
+	}
+	return result
 }
 
 func reverseWord(s string) string {
 	result := ""
 	l := len(s)
 	for i := l - 1; i >= 0; i-- {
-		result = result + string(s[i])
+		result = result + " " + string(s[i])
 	}
 	return result
 }
